@@ -83,17 +83,14 @@ for i in pl_list:
     ns = j ^ ns
     print ("new sum", ns)
     #break
-    pl_list[pl_list.index(i)] = ov
-   if ns ==0:
-     break
-    
-    
-  #print ("**3",ov)
+  if ns ==0:
+    break 
+  pl_list[pl_list.index(i)] = ov
      #pl_list[pl_list.index(i)] = ov
   #continue
   
 print (pl_list)
-  
+
   
  #print (pl_list.index(i)) --- to get index value of a list item
  
