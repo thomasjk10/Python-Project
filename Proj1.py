@@ -83,6 +83,7 @@ for i in pl_list:
     ns = j ^ ns
     print ("new sum", ns)
     #break
+    # might need to move  the if statement below the above print
   if ns ==0:
     break 
   pl_list[pl_list.index(i)] = ov
