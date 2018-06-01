@@ -70,6 +70,7 @@ print ("now new sum is", nw_nimsum)
 # print (bi_num, end = " ")
 # print (bi_num[1])
 ns = 0
+chkpt = 0
 #index = 0
 for i in pl_list:
   ov = i
@@ -81,22 +82,22 @@ for i in pl_list:
    print (pl_list)
    for j in pl_list:
     ns = j ^ ns
-    print ("new sum", ns)
+   print ("new sum", ns)
     #break
-    # might need to move  the if statement below the above print
-  if ns ==0:
-    break 
-  pl_list[pl_list.index(i)] = ov
+    #ns = 0
+   if ns ==0:
+    chkpt = 1
+    break
+   elif i == 0:  
+    pl_list[pl_list.index(i)] = ov
      #pl_list[pl_list.index(i)] = ov
   #continue
+  #chkpt =1
+  if chkpt ==1:
+    break
   
 print (pl_list)
 
-  
+# This has been test.... continue after this check  
  #print (pl_list.index(i)) --- to get index value of a list item
  
-  
-
-  
-  
-
