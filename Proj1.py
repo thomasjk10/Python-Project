@@ -69,13 +69,15 @@ print ("now new sum is", nw_nimsum)
 # bi_num = bin(i)
 # print (bi_num, end = " ")
 # print (bi_num[1])
-ns = 0
+#ns = 0
 chkpt = 0
 #index = 0
 for i in pl_list:
   ov = i
+  #ns = 0
   while i !=0:
    #print ("**1",ov)
+   ns = 0
    nv = i -1
    pl_list[pl_list.index(i)] = nv
    i = nv
@@ -98,6 +100,5 @@ for i in pl_list:
   
 print (pl_list)
 
-# This has been test.... continue after this check  
+# This code modified on 2nd June looks ok.... continue after this check  
  #print (pl_list.index(i)) --- to get index value of a list item
- 
