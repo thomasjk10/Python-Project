@@ -1,6 +1,7 @@
 #Project to simulate the game of SIM based on user inputs
 from random import randint
 import re
+import random
 
 #name = input("Please enter your name: ")
 while True:
@@ -66,6 +67,7 @@ while winner is False:
  print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
+  print (name, "wins")
   break
 
 #Now it is computer's turn to play
@@ -75,21 +77,26 @@ while winner is False:
  for i in pl_list:
   nw_nimsum = i ^ nw_nimsum
  print ("now new sum is", nw_nimsum)
-#for i in pl_list:
-# bi_num = bin(i)
-# print (bi_num, end = " ")
-# print (bi_num[1])
-#ns = 0
+ if nw_nimsum == 0:
+  chklen = len(pl_list)
+  ranindx = random.randint(0,chklen)
+  ranival = pl_list[ranindx]
+  pickran = randint(range(ranival))
+  pl_list[pl_list.index(ranindx)] = pickran
+  break
+  
  chkpt = 0
+ cntr = 0
 #index = 0
  for i in pl_list:
-   ov = i
+   ov = pl_list[cntr]
   #ns = 0
    while i !=0:
    #print ("**1",ov)
     ns = 0
     nv = i -1
-    pl_list[pl_list.index(i)] = nv
+    # need to handle this check because some list items can be same:
+    pl_list[cntr] = nv
     i = nv
     print (pl_list)
     for j in pl_list:
@@ -101,7 +108,8 @@ while winner is False:
      chkpt = 1
      break
     elif i == 0:  
-     pl_list[pl_list.index(i)] = ov
+     pl_list[cntr] = ov
+     cntr = cntr +1
      #pl_list[pl_list.index(i)] = ov
   #continue
   #chkpt =1
@@ -111,6 +119,7 @@ while winner is False:
  print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
+  print ("I win")
   break
  pilecount = len(pl_list)
 
