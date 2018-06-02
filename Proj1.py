@@ -50,6 +50,7 @@ while winner is False:
 #Now it is Player's turn to play
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
+  winner = True
   break
  print ("Choose Pile number from following listed pile numbers -->", end ="")
  for i in range(len(pl_list)):
@@ -67,6 +68,7 @@ while winner is False:
  print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
+  winner = True
   print (name, "wins")
   break
 
@@ -119,6 +121,7 @@ while winner is False:
  print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
+  winner = True
   print ("I win")
   break
  pilecount = len(pl_list)
