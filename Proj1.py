@@ -42,6 +42,8 @@ for i in pl_list:
 print (nimsum, end = " ")
 #print (nimsum, end = " ")
 
+
+
 #Now it is Player's turn to play
 print ("Choose Pile number from following listed pile numbers -->", end ="")
 for i in range(len(pl_list)):
@@ -99,6 +101,17 @@ for i in pl_list:
     break
   
 print (pl_list)
+pilecount = len(pl_list)
 
-# This code modified on 2nd June looks ok.... continue after this check  
+
+for i in range(pilecount):
+ print("Pile ",i+1 ,":", end = "")
+ for d in range(pl_list[i]):
+    print(" X ", end= "")
+ print('\n')
+ 
+ 
+#pl_list[pl_list.index(i)] = nv
+
+# This has been tested.... now working on repeating turns of comp and user
  #print (pl_list.index(i)) --- to get index value of a list item
