@@ -80,12 +80,17 @@ while winner is False:
   nw_nimsum = i ^ nw_nimsum
  print ("now new sum is", nw_nimsum)
  if nw_nimsum == 0:
-  chklen = len(pl_list)
-  ranindx = random.randint(0,chklen)
-  ranival = pl_list[ranindx]
-  pickran = randint(range(ranival))
-  pl_list[pl_list.index(ranindx)] = pickran
-  break
+  chklen = len(pl_list) - 1
+  try:
+   ranindx = random.randint(0,chklen)
+   ranival = pl_list[ranindx]
+  except:
+    if ranival == 0:
+     continue
+  #ranival = pl_list[ranindx]
+  pickran = randint(0,ranival)
+  pl_list[ranindx] = pickran
+  continue
   
  chkpt = 0
  cntr = 0
