@@ -36,12 +36,12 @@ for i in pilecount:
     for j in range(a):
         print(" X ", end= "")
     print('\n')
-print (pl_list)
+#--print (pl_list)
 
 nimsum = 0
 for i in pl_list:
     nimsum = i ^ nimsum
-print (nimsum, end = " ")
+#--print (nimsum, end = " ")
 
 
 #----------------------This section displays Playing Board-----------------------#
@@ -72,7 +72,7 @@ while winner is False:
     stone_ch = int(input())
     upd_stack = pl_list[choice-1] - stone_ch
     pl_list[choice-1] = upd_stack
-    print (pl_list)
+    #--print (pl_list)
     winchk = (all([x==0 for x in pl_list])) 
     if winchk is True:
         winner = True
@@ -90,7 +90,7 @@ while winner is False:
  nw_nimsum = 0
  for i in pl_list:
     nw_nimsum = i ^ nw_nimsum
- print ("now new sum is", nw_nimsum)
+ #--print ("now new sum is", nw_nimsum)
  nz_list = list()
  
  if nw_nimsum == 0:
@@ -102,7 +102,7 @@ while winner is False:
     pickran = randint(0,q)
     pl_list[getindx] = pickran
     getindx = 0
-    print (pl_list)
+    #--print (pl_list)
 
     for i in range(len(pl_list)):
      print("Pile ",i+1 ,":", end = "")
@@ -123,10 +123,10 @@ while winner is False:
     nv = i -1
     pl_list[cntr] = nv
     i = nv
-    print (pl_list)
+    #--print (pl_list)
     for j in pl_list:
      ns = j ^ ns
-    print ("new sum", ns)
+    #--print ("new sum", ns)
     if ns ==0:
      chkpt = 1
      break
@@ -136,7 +136,7 @@ while winner is False:
    if chkpt ==1:
      break
   
- print (pl_list)
+ #--print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
   winner = True
