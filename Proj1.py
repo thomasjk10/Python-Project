@@ -59,10 +59,28 @@ while winner is False:
  if winchk is True:
     winner = True
     break
- print ("Choose Pile number from following listed pile numbers -->", end ="")
- #for i in range(len(pl_list)):
- #   print (i+1, end =" ")
- choice =int(input(":"))
+ 
+ pilecho = input("Choose Pile number from following listed pile numbers --> ")
+ try:
+    choice = int(pilecho)
+    try:
+        pl_list[choice-1]
+        if pl_list[choice-1] ==0:
+            print ("This Pile is already Empty: ")
+            continue
+    except IndexError:
+        print ("Try again:")
+        continue
+ except ValueError:
+    print ("Please choose valid numeric Pile number only")
+    continue
+    
+ try:
+  valchi = pl_list[choice-1]
+ except IndexError:
+  print ("Please choose a Valid Pile only:")
+  continue
+  
  print ("Choose number of stones to remove from your selected pile",choice, ":", end ="")
  if pl_list[choice-1] ==1:
     print ("This is the last one you can remove", ":", end="")
@@ -74,6 +92,7 @@ while winner is False:
     stone_ch = int(input())
     upd_stack = pl_list[choice-1] - stone_ch
     pl_list[choice-1] = upd_stack
+    
     #--print (pl_list)
     winchk = (all([x==0 for x in pl_list])) 
     if winchk is True:
