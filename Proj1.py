@@ -67,6 +67,8 @@ while winner is False:
  if pl_list[choice-1] ==1:
     print ("This is the last one you can remove", ":", end="")
     stone_ch = int(input())
+    upd_stack = pl_list[choice-1] - stone_ch
+    pl_list[choice-1] = upd_stack
  else:
     print ("(Choose between 1 to", pl_list[choice-1],":)", end="")
     stone_ch = int(input())
