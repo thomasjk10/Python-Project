@@ -14,15 +14,23 @@ while True:
         print ("Please enter non-blank name")
         continue
     else:
-        print(name[:1])
-        break
+        if (name[:1]).isdigit() is True:
+            print ("Name can't begin with numeric value")
+            continue
+        if len(name) < 4:
+            print ("Please enter upto 4 Characters")
+            continue
+        else:
+            print ("Welcome ", name,)
+            break
+
+        
 #----------------------This section accepts Player's Name------------------------#
 
 
 #----------------------This section displays Playing Board-----------------------#
 rand = randint(3,6)
 pilecount = range(rand)
-print ('\n')
 print ("Here is your game to play")
 print ('\n')
 
@@ -80,25 +88,45 @@ while winner is False:
  except IndexError:
   print ("Please choose a Valid Pile only:")
   continue
-  
- print ("Choose number of stones to remove from your selected pile",choice, ":", end ="")
- if pl_list[choice-1] ==1:
-    print ("This is the last one you can remove", ":", end="")
-    stone_ch = int(input())
-    upd_stack = pl_list[choice-1] - stone_ch
-    pl_list[choice-1] = upd_stack
- else:
-    print ("(Choose between 1 to", pl_list[choice-1],":)", end="")
-    stone_ch = int(input())
-    upd_stack = pl_list[choice-1] - stone_ch
-    pl_list[choice-1] = upd_stack
-    
+
+ while True:
+    if pl_list[choice-1] ==1:
+        print ("Choose number of stones to remove from your selected pile", end ="")
+        print ("(This is the last one you can remove) ", ":", end="")
+        stone_chi = input()
+        if stone_chi.isdigit() is False:
+            print ("Please enter valid numeric value from given choices")
+            continue
+        elif int(stone_chi) > pl_list[choice-1]:
+            print ("This pile does not contain", stone_chi, "stones, Try again")
+            continue
+        else:
+            break
+    else:
+        print ("Choose number of stones to remove from your selected pile", end ="")
+        print ("(Choose between 1 to", pl_list[choice-1],":)", end="")
+        stone_chi = input()
+        if stone_chi.isdigit() is False:
+            print ("Please enter valid numeric value from given choices")
+            continue
+        elif int(stone_chi) > pl_list[choice-1]:
+            print ("This pile does not contain", stone_chi, "stones, Try again")
+            continue
+        else:
+            break
+
+ upd_stack = pl_list[choice-1] - int(stone_chi)
+ pl_list[choice-1] = upd_stack
+ 
+
+        
+ 
     #--print (pl_list)
-    winchk = (all([x==0 for x in pl_list])) 
-    if winchk is True:
-        winner = True
-        print (name, "wins")
-        break
+ winchk = (all([x==0 for x in pl_list])) 
+ if winchk is True:
+    winner = True
+    print (name, "wins")
+    break
 
 #----------------------This section accepts Player's Choice----------------------#
 
