@@ -110,29 +110,29 @@ while played >=0:
             if pl_list[choice-1] ==1:
                 print ("Choose number of stones to remove from your selected pile", end ="")
                 print ("(This is the last one you can remove) ", ":", end="")
-                stone_chi = input()
-                if stone_chi.isdigit() is False:
+                stone_cho = input()
+                if stone_cho.isdigit() is False:
                     print ("Please enter valid numeric value from given choices")
                     continue
-                elif int(stone_chi) > pl_list[choice-1]:
-                    print ("This pile does not contain", stone_chi, "stones, Try again")
+                elif int(stone_cho) > pl_list[choice-1]:
+                    print ("This pile does not contain", stone_cho, "stones, Try again")
                     continue
                 else:
                     break
             else:
                 print ("Choose number of stones to remove from your selected pile", end ="")
                 print ("(Choose between 1 to", pl_list[choice-1],":)", end="")
-                stone_chi = input()
-                if stone_chi.isdigit() is False:
+                stone_cho = input()
+                if stone_cho.isdigit() is False:
                     print ("Please enter valid numeric value from given choices")
                     continue
-                elif int(stone_chi) > pl_list[choice-1]:
-                    print ("This pile does not contain", stone_chi, "stones, Try again")
+                elif int(stone_cho) > pl_list[choice-1]:
+                    print ("This pile does not contain", stone_cho, "stones, Try again")
                     continue
                 else:
                     break
 
-        upd_stack = pl_list[choice-1] - int(stone_chi)
+        upd_stack = pl_list[choice-1] - int(stone_cho)
         pl_list[choice-1] = upd_stack
  
         winchk = (all([x==0 for x in pl_list])) 
@@ -153,14 +153,14 @@ while played >=0:
         nw_nimsum = 0
         for i in pl_list:
             nw_nimsum = i ^ nw_nimsum
-        nz_list = list()
+        temp_list = list()
  
         if nw_nimsum == 0:
   
             for q in pl_list:
                 if q!= 0:
                     getindx = pl_list.index(q)
-                    nz_list.append(q)
+                    temp_list.append(q)
                     pickran = randint(0,q)
                     pl_list[getindx] = pickran
                     getindx = 0
@@ -178,21 +178,21 @@ while played >=0:
         cntr = 0
 
         for i in pl_list:
-            ov = pl_list[cntr]
+            orig_val = pl_list[cntr]
             while i !=0:
-                ns = 0
-                nv = i -1
-                pl_list[cntr] = nv
-                i = nv
+                newsum = 0
+                newvalue = i -1
+                pl_list[cntr] = newvalue
+                i = newvalue
 
                 for j in pl_list:
-                    ns = j ^ ns
+                    newsum = j ^ newsum
 
-                if ns == 0:
+                if newsum == 0:
                     chkpt = 1
                     break
                 elif i == 0:  
-                    pl_list[cntr] = ov
+                    pl_list[cntr] = orig_val
      
             cntr = cntr +1
             if chkpt ==1:
