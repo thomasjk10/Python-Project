@@ -10,19 +10,16 @@ import random
 #----------------------This section accepts Player's Name------------------------#
 while True:
     name = input("Please enter your name: ")
-    if len(name) ==0 :
-        print ("Please enter non-blank name")
+    name_chk = re.compile("^[a-zA-Z]+|_[0-9]+")
+    if not re.match(name_chk,name) :
+        print ("Please enter name without blanks or special characters")
+        continue
+    elif len(name) < 4:
+        print ("Please enter upto 4 Characters")
         continue
     else:
-        if (name[:1]).isdigit() is True:
-            print ("Name can't begin with numeric value")
-            continue
-        if len(name) < 4:
-            print ("Please enter upto 4 Characters")
-            continue
-        else:
-            print ("Welcome ", name,)
-            break
+        print ("Welcome ", name,)
+        break
 
         
 #----------------------This section accepts Player's Name------------------------#
@@ -44,12 +41,10 @@ for i in pilecount:
     for j in range(a):
         print(" X ", end= "")
     print('\n')
-#--print (pl_list)
 
 nimsum = 0
 for i in pl_list:
     nimsum = i ^ nimsum
-#--print (nimsum, end = " ")
 
 
 #----------------------This section displays Playing Board-----------------------#
@@ -118,10 +113,6 @@ while winner is False:
  upd_stack = pl_list[choice-1] - int(stone_chi)
  pl_list[choice-1] = upd_stack
  
-
-        
- 
-    #--print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
     winner = True
@@ -135,68 +126,67 @@ while winner is False:
 #----------------------This section calcuates Computer's Move--------------------#
 
 #Now it is computer's turn to play
+ print('\n')
  print ("Now it's my turn")
  nw_nimsum = 0
  for i in pl_list:
     nw_nimsum = i ^ nw_nimsum
- #--print ("now new sum is", nw_nimsum)
  nz_list = list()
  
  if nw_nimsum == 0:
   
-  for q in pl_list:
-   if q!= 0:
-    getindx = pl_list.index(q)
-    nz_list.append(q)
-    pickran = randint(0,q)
-    pl_list[getindx] = pickran
-    getindx = 0
-    #--print (pl_list)
+    for q in pl_list:
+        if q!= 0:
+            getindx = pl_list.index(q)
+            nz_list.append(q)
+            pickran = randint(0,q)
+            pl_list[getindx] = pickran
+            getindx = 0
 
-    for i in range(len(pl_list)):
-     print("Pile ",i+1 ,":", end = "")
-     for d in range(pl_list[i]):
-       print(" X ", end= "")
-     print('\n')
-    break
-  continue
+            for i in range(len(pl_list)):
+                print("Pile ",i+1 ,":", end = "")
+                for d in range(pl_list[i]):
+                    print(" X ", end= "")
+                print('\n')
+            break
+    continue
      
   
  chkpt = 0
  cntr = 0
 
  for i in pl_list:
-   ov = pl_list[cntr]
-   while i !=0:
-    ns = 0
-    nv = i -1
-    pl_list[cntr] = nv
-    i = nv
-    #--print (pl_list)
-    for j in pl_list:
-     ns = j ^ ns
-    #--print ("new sum", ns)
-    if ns ==0:
-     chkpt = 1
-     break
-    elif i == 0:  
-     pl_list[cntr] = ov
-   cntr = cntr +1
-   if chkpt ==1:
-     break
+    ov = pl_list[cntr]
+    while i !=0:
+        ns = 0
+        nv = i -1
+        pl_list[cntr] = nv
+        i = nv
+
+        for j in pl_list:
+            ns = j ^ ns
+
+        if ns == 0:
+            chkpt = 1
+            break
+        elif i == 0:  
+            pl_list[cntr] = ov
+     
+    cntr = cntr +1
+    if chkpt ==1:
+        break
   
- #--print (pl_list)
  winchk = (all([x==0 for x in pl_list])) 
  if winchk is True:
-  winner = True
-  print ("I win")
-  break
+    winner = True
+    print ("I win")
+    break
  pilecount = len(pl_list)
 
  #----------------------This section calcuates Computer's Move--------------------#
 
  for i in range(pilecount):
-  print("Pile ",i+1 ,":", end = "")
-  for d in range(pl_list[i]):
-     print(" X ", end= "")
-  print('\n')
+    print("Pile ",i+1 ,":", end = "")
+    for d in range(pl_list[i]):
+        print(" X ", end= "")
+    print('\n')
