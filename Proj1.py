@@ -139,6 +139,7 @@ while played >=0:
         if winchk is True:
             winner = True
             print (name, "wins")
+            played = played + 1
             break
 
 #------------------------------End of this section-------------------------------#
@@ -161,7 +162,7 @@ while played >=0:
                 if q!= 0:
                     getindx = pl_list.index(q)
                     temp_list.append(q)
-                    pickran = randint(0,q)
+                    pickran = randint(0,q-1)
                     pl_list[getindx] = pickran
                     getindx = 0
 
